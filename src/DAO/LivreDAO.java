@@ -1,5 +1,7 @@
 package DAO;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import entites.Livre;
 
@@ -95,8 +97,8 @@ public class LivreDAO {
 
 
 	                 String isbnL = rs.getString("isbn");
-	                 String auther = rs.getString("auther");
-	                 String name = rs.getString("name");
+	                 String auther = rs.getString("auteur");
+	                 String name = rs.getString("titre");
 	                 String editeur = rs.getString("editeur");
 	                 Livre result = new Livre(isbnL,auther,name,editeur);
 
@@ -113,6 +115,45 @@ public class LivreDAO {
 	         return null;
 
 	    }
+	    
+	    
+	    
+	    
+	    public List<Livre> getALLBooks() {
+	    	List<Livre> livreArray = new ArrayList<Livre>();
+	    	 try {
+                  
+	             con = Connexion.getInstance().getConnection();
+	             stmt = con.createStatement();
+	             String query=
+	                     "SELECT * FROM livre ";
+
+
+	             rs = stmt.executeQuery(query);
+
+	             while (rs.next()) {
+
+
+	                 String isbnL = rs.getString("isbn");
+	                 String auther = rs.getString("auteur");
+	                 String name = rs.getString("titre");
+	                 String editeur = rs.getString("editeur");
+	                 Livre result = new Livre(isbnL,auther,name,editeur);
+                         
+	                  livreArray.add(result);
+	             }
+
+
+
+	         } catch (SQLException e) {
+	             // TODO Auto-generated catch block
+	             e.printStackTrace();
+	         }
+
+	         return livreArray;
+
+	    }
+	    
 	    
 	     
 	    

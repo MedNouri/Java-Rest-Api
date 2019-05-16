@@ -14,7 +14,7 @@ public class Connexion {
     private Connection connection;
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost/bibliothèque";
-    private static final String USERNAME = "root";
+    private static final String USERNAME = "mohamed";
     private static final String PASSWORD = "FOSRoKl6pJ7VZ6ay";
 
     private Connexion() throws SQLException {
